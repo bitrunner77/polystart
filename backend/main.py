@@ -19,9 +19,18 @@ import requests
 import secrets
 import time
 from datetime import datetime
-from functools import wraps
+
+# Import routers
+from .search import router as search_router
+from .analytics import router as analytics_router
+from .notifications import router as notifications_router
 
 app = FastAPI(title="PolyStart API")
+
+# Include routers
+app.include_router(search_router, prefix="/search", tags=["Search"])
+app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
+app.include_router(notifications_router, prefix="/notifications", tags=["Notifications"])
 
 # CORS - allow Vercel and localhost
 app.add_middleware(
