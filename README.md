@@ -1,77 +1,61 @@
-# PolyStart - MVP Plan
+# PolyStart 🏆
 
-## Problem
-Polymarket has 179+ tools but ALL are for advanced traders. Beginners struggle with:
-- No simple "start here" guide
-- Complex UI with no explanations
-- Hard to find good traders to follow
-- Overwhelming when first starting
+Beginner-friendly Polymarket copy trading tool.
 
-## Solution
-**PolyStart** - The beginner-friendly Polymarket companion
+## Features
 
-### Core Features (MVP)
-1. **Curated Trader Lists** - Pre-vetted top traders by category (politics, sports, crypto)
-2. **One-Tap Follow** - Add trader to watchlist in 1 click
-3. **Simple Alerts** - Get notified when tracked traders make moves
-4. **Beginner Guide** - "How to start trading" walkthrough
-5. **Copy % Settings** - Automatically follow at % of their position size
+- **Real-time Leaderboard** - Top traders by category (Politics, Sports, Crypto, etc.)
+- **User Accounts** - Sign up and track your follows
+- **Follow Traders** - Save your favorite traders to watch
+- **Tier System** - Free (3 follows) vs Pro (unlimited)
+- **Analytics** - Period comparison, category insights
+- **Rate Limiting** - 100 req/hr free, cached responses
+- **Telegram Alerts** - Get notified when traders make moves (coming soon)
 
-### Pricing
-- **Free:** Follow 3 traders, basic alerts
-- **Pro ($9.99/mo):** Unlimited follows, auto-copy, advanced analytics
+## Tech Stack
 
-### Tech Stack
-- **Backend:** FastAPI (Python) 
-- **Frontend:** React (simple dashboard)
-- **Hosting:** Render free tier → $10/mo
-- **Database:** SQLite (free) → PostgreSQL later
-- **API:** Polymarket GraphQL (free)
-- **Notifications:** Telegram Bot API (free)
+- **Backend:** FastAPI + SQLite
+- **Frontend:** React + Vite
+- **Data:** Polymarket API
+- **Hosting:** Render (backend) + Vercel (frontend)
 
-### 30-Day Roadmap
+## Quick Start
 
-#### Week 1: Foundation
-- [ ] Set up GitHub repo
-- [ ] Design database schema (traders, users, alerts)
-- [ ] Connect to Polymarket API (test data)
-- [ ] Build simple API endpoint: get_top_traders()
+```bash
+# Backend
+cd backend
+pip install -r requirements.txt
+python main.py
 
-#### Week 2: Core Features  
-- [ ] Build Telegram bot for alerts
-- [ ] Create React frontend (dashboard)
-- [ ] Add "follow trader" functionality
-- [ ] Test with 5 beta users
+# Frontend
+cd frontend
+npm install
+npm run dev
+```
 
-#### Week 3: Launch
-- [ ] Deploy to Render
-- [ ] Set up Stripe billing (for Pro)
-- [ ] Launch on Reddit/Twitter
-- [ ] Get first 10 users
+## API
 
-#### Week 4: Iterate
-- [ ] Gather feedback
-- [ ] Fix top 3 issues
-- [ ] First paying customer
-- [ ] Plan Phase 2 (auto-copy, more features)
+| Endpoint | Description |
+|----------|-------------|
+| `GET /traders` | Top 20 traders |
+| `GET /traders/{category}` | By category |
+| `POST /users` | Create account |
+| `POST /follow` | Follow trader |
+| `GET /follows` | Your follows |
+| `GET /analytics/trader/{addr}` | Trader insights |
+| `GET /analytics/categories` | Category comparison |
 
-### Monthly Cost Estimate
-| Item | Cost |
-|------|------|
-| Render (backend) | $0-10 |
-| Domain | $12/yr |
-| Stripe | Free |
-| Polymarket API | Free |
-| **Total** | **$10-15/mo** ✅
+## Deployment
 
-### Differentiation vs Competition
-| Competitor | What they do | PolyStart |
-|------------|--------------|-----------|
-| PolyCop | Advanced copy trading | SIMPLE for beginners |
-| PolyGun | All-in-one terminal | Focus on ONE thing (copy) |
-| Polycool | Whale tracking | Curated + explained |
-| okbet | Cross-platform | Just Polymarket (simpler) |
+See [DEPLOY.md](DEPLOY.md) for step-by-step deploy to Render + Vercel.
 
-### Key Insight
-All competitors are for people who ALREADY know how to trade. 
-**PolyStart is for people who want to LEARN while copying.**
+## Pricing
+
+| Tier | Price | Features |
+|------|-------|----------|
+| Free | $0 | 3 follows, basic alerts |
+| Pro | $9.99/mo | Unlimited follows, auto-copy, premium alerts |
+
+## License
+
+MIT
